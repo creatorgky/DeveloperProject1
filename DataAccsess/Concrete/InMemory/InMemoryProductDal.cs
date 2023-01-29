@@ -1,10 +1,7 @@
 ﻿using DataAccsess.Abstract;
 using Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Entities.DTOs;
+using System.Linq.Expressions;
 
 namespace DataAccsess.Concrete.InMemory
 {
@@ -21,7 +18,7 @@ namespace DataAccsess.Concrete.InMemory
                 new Product { CategoryId = 4, ProductId = 4, ProductName = "BoxEldiveni", UnitPrice = 30, UnitsInStock = 25 },
                 new Product { CategoryId = 4, ProductId = 5, ProductName = "Bandaj", UnitPrice = 10, UnitsInStock = 50 }
               };
-        }   
+        }
         public void Add(Product product)
         {
             _products.Add(product);
@@ -34,15 +31,30 @@ namespace DataAccsess.Concrete.InMemory
 
         }
 
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetAll()
         {
             return _products;
         }
 
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetAllByCategory(int categoryId)
         {
-           return _products.Where(p=>p.CategoryId == categoryId).ToList();
+            return _products.Where(p => p.CategoryId == categoryId).ToList();
 
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Product product)
